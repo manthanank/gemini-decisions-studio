@@ -121,6 +121,13 @@ npm start
 - `GET /api/decisions` — Returns `{ hasServerApiKey, model: "gemini-decision-1", apiVersion: "v1beta" }`.
 - `POST /api/decisions` — Accepts `{ inputBlocks, questions, forceSimulate? }` and optional `x-gemini-api-key` header. Validates all question keys (`[A-Za-z0-9_-]{1,64}`), option keys, and rubric levels before calling `ai.decisions.create(...)` or the local simulator.
 
+## Deployment on Netlify
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/manthanank/gemini-decisions-studio#GEMINI_API_KEY=)
+
+1. Connect the GitHub repository in Netlify (or use the **Deploy to Netlify** button above). [`netlify.toml`](netlify.toml) automatically configures `npm run build`, `.next`, and `@netlify/plugin-nextjs`.
+2. Add `GEMINI_API_KEY` in **Project configuration → Environment variables** (scoped to **Builds** and **Functions** / runtime), then trigger a redeploy. (Without `GEMINI_API_KEY`, the app still runs in Simulator Mode and accepts an optional session key in the UI.)
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
